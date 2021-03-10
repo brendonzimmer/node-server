@@ -1,0 +1,19 @@
+{
+  "name": "vidly-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brendon Zimmer",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fawn": "^2.1.5",
+    "joi": "^17.4.0",
+    "joi-objectid": "^3.0.1",
+    "mongoose": "^5.11.19",
+    "nodemon": "^2.0.7"
+  }
+}
