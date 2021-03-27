@@ -81,11 +81,6 @@ winston.add(
   })
 ); // DATABASE LOG FILE
 
-// throw new Error();
-
-// const p = Promise.reject(new Error());
-// p.then(() => console.log("Done"));
-
 if (!config.get("jwtPrivateKey")) {
   console.error("FATAL ERROR: jwtPrivateKey is not defined.");
   process.exit(1);

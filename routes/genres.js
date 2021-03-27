@@ -6,7 +6,6 @@ const router = express.Router();
 
 // GET ------------------------------------
 router.get("/", async (req, res) => {
-  // throw new Error();
   const genres = await Genre.find().sort("name");
   res.send(genres);
 });
