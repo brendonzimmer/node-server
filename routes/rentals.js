@@ -1,3 +1,5 @@
+const auth = require("../middleware/auth");
+const admin = require("../middleware/admin");
 const { Rental, validate } = require("../models/rental");
 const { Customer } = require("../models/customer");
 const { Movie } = require("../models/movie");
@@ -24,7 +26,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // POST ------------------------------------
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   //   Test for errors ---------------------
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -73,7 +75,7 @@ router.post("/", async (req, res) => {
 });
 
 // PUT ------------------------------------
-router.put("/:id", async (req, res) => {
+router.put("/:id", [auth, admin], async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -110,7 +112,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // DELETE ------------------------------------
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", [auth, admin], async (req, res) => {
   const rental = await Rental.findByIdAndRemove(req.params.id);
 
   if (!rental)
