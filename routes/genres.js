@@ -33,7 +33,7 @@ router.post("/", [auth, admin], async (req, res) => {
 });
 
 // PUT ------------------------------------
-router.put("/:id", [auth, admin], async (req, res) => {
+router.put("/:id", [auth, admin, validateObjectId], async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -54,7 +54,7 @@ router.put("/:id", [auth, admin], async (req, res) => {
 });
 
 // DELETE ------------------------------------
-router.delete("/:id", [auth, admin], async (req, res) => {
+router.delete("/:id", [auth, admin, validateObjectId], async (req, res) => {
   const genre = await Genre.findByIdAndRemove(req.params.id);
 
   if (!genre)
