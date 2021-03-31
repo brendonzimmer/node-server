@@ -7,8 +7,8 @@ describe("auth middleware", () => {
     server = require("../../../index");
   });
   afterEach(async () => {
+    await server.close();
     await Genre.remove({}); // Deprecation warning
-    server.close();
   });
 
   let token;
